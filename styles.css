@@ -5,17 +5,23 @@ h1 {
 }
 
 .cell {
-    border: 1px solid black;
+    border: 1px solid lightgray;
     background-color: white;
-    width: 16px;
-    height: 16px;
     box-sizing: border-box;
   }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    width: 256px;
-    height: 256px;
+    width: 554px;
+    height: 554px;
     border: 1px solid black;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightslategrey;
 }
