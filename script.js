@@ -17,13 +17,36 @@ function createGrid(size) {
   colorGrid();
 }
 
-function colorGrid () {
+function colorGrid() {
   const cells = document.querySelectorAll('.cell');
+  let isMouseDown = false;
+
   cells.forEach((cell) => {
-    cell.addEventListener("mouseover", (event) => {
+    cell.addEventListener("mousedown", (event) => {
+      isMouseDown = true;
       event.target.style.backgroundColor = "red";
     });
+
+    cell.addEventListener("mousemove", (event) => {
+      if (isMouseDown) {
+        event.target.style.backgroundColor = "red";
+      }
     });
+
+    cell.addEventListener("mouseup", () => {
+      isMouseDown = false;
+    });
+
+    cell.addEventListener("mouseleave", (event) => {
+      if (isMouseDown) {
+        event.target.style.backgroundColor = "red";
+      }
+    });
+  });
+
+  document.body.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
 }
 
 function clearColors () {

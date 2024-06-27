@@ -25,3 +25,15 @@ body {
     align-items: center;
     background-color: lightslategrey;
 }
+
+.menu {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    box-sizing: content-box;
+}
+
+.button, .btnReset {
+    padding: 5px;
+}
