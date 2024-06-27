@@ -24,12 +24,12 @@ function colorGrid() {
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", (event) => {
       isMouseDown = true;
-      event.target.style.backgroundColor = "red";
+      event.target.style.backgroundColor = randomColors();
     });
 
     cell.addEventListener("mousemove", (event) => {
       if (isMouseDown) {
-        event.target.style.backgroundColor = "red";
+        event.target.style.backgroundColor = randomColors();
       }
     });
 
@@ -39,7 +39,7 @@ function colorGrid() {
 
     cell.addEventListener("mouseleave", (event) => {
       if (isMouseDown) {
-        event.target.style.backgroundColor = "red";
+        event.target.style.backgroundColor = randomColors();
       }
     });
   });
@@ -73,3 +73,13 @@ button.addEventListener('mouseup', (e) => {
   btnReset.addEventListener('mouseup', () => {
     clearColors ();
   });
+
+  function randomColors () {
+    let r = Math.floor(Math.random() * 255)
+    let g = Math.floor(Math.random() * 255)
+    let b = Math.floor(Math.random() * 255)
+    let randomColor = `rgb(${r}, ${g}, ${b})`;
+    return randomColor;
+  }
+
+  console.log(randomColors());
