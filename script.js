@@ -24,12 +24,32 @@ function colorGrid() {
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", (event) => {
       isMouseDown = true;
-      event.target.style.backgroundColor = randomColors();
+      let currentColor = event.target.style.backgroundColor;
+
+      if (currentColor === "" || currentColor === "transparent"){
+        event.target.style.backgroundColor = randomColors();
+        event.target.style.opacity = 1;
+      } else {
+        let currentOpacity = parseFloat(event.target.style.opacity);
+        if (currentOpacity > 0) {
+          event.target.style.opacity = currentOpacity - 0.1;
+        }
+      }        
     });
 
     cell.addEventListener("mousemove", (event) => {
       if (isMouseDown) {
+      let currentColor = event.target.style.backgroundColor;
+
+      if (currentColor === "" || currentColor === "transparent"){
         event.target.style.backgroundColor = randomColors();
+        event.target.style.opacity = 1;
+      } else {
+        let currentOpacity = parseFloat(event.target.style.opacity);
+        if (currentOpacity > 0) {
+          event.target.style.opacity = currentOpacity - 0.1;
+        }
+      }           
       }
     });
 
@@ -39,7 +59,18 @@ function colorGrid() {
 
     cell.addEventListener("mouseleave", (event) => {
       if (isMouseDown) {
+      let currentColor = event.target.style.backgroundColor;
+
+      if (currentColor === "" || currentColor === "transparent"){
         event.target.style.backgroundColor = randomColors();
+        event.target.style.opacity = 1;
+      } else {
+        let currentOpacity = parseFloat(event.target.style.opacity);
+        if (currentOpacity > 0) {
+          event.target.style.opacity = currentOpacity - 0.1;
+        }
+      }      
+
       }
     });
   });
@@ -53,6 +84,7 @@ function clearColors () {
   const cells = document.querySelectorAll('.cell');
   cells.forEach((cell) => {
       cell.style.backgroundColor = "";
+      cell.style.opacity = 1;
     });
     };
 
@@ -80,6 +112,4 @@ button.addEventListener('mouseup', (e) => {
     let b = Math.floor(Math.random() * 255)
     let randomColor = `rgb(${r}, ${g}, ${b})`;
     return randomColor;
-  }
-
-  console.log(randomColors());
+  };
